@@ -1,0 +1,22 @@
+.contenedor{
+    width: 100vw;
+    height: 100vh;
+    background: #302E2F;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around
+}
+
+.contenedor section{
+    max-width: 920px;
+}
+
+.contenedor a{
+    width: 200px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
