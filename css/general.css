@@ -4,3 +4,8 @@
     margin: 0;
     font-size: 16px;
 }
+
+:root{
+    --color-primario: #D2D0D3;
+    --color-secundario: #302E2F;
+}

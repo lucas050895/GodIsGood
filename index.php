@@ -5,16 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>God Is Good</title>
-    <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/general.css">
 </head>
 <body>
     <main class="contenedor">
         <section>
             <img src="img/logo-sin.png" alt="Logo de la barberia">
         </section>
-        hola
-        <a href="#">Reservar turno</a>
+
+        <section>
+            <button class="button" role="button">
+                <a href="#">Reservar turno</a>
+            </button>
+        </section>
     </main>
 </body>
 </html>
