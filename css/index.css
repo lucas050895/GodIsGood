@@ -1,28 +1,25 @@
 .contenedor{
-    width: 100%;
-    display: grid;
-    grid-template-rows: 80vh 20vh;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:"imagen imagen"
+  grid-template-rows: 80vh 20vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:"imagen imagen"
                         "boton  boton";
-    background: var(--color-secundario)
 }
 
 .contenedor section{
-    grid-area: imagen;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  grid-area: imagen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .contenedor section img{
-    width: 100%;
+  width: 100%;
 }
 
 .contenedor section:nth-child(2){
-    grid-area: boton;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  grid-area: boton;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .button{
   --b: 3px;
@@ -45,8 +42,8 @@
   outline-offset: .05em;
 }
 .contenedor section:nth-child(2) .button a{
-    font-size: 1.5rem;
-    color: var(--color-primario);
-    text-transform: uppercase;
-    text-decoration: none;
+  font-size: 1.5rem;
+  color: var(--color-primario);
+  text-transform: uppercase;
+  text-decoration: none;
 }

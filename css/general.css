@@ -8,4 +8,25 @@
 :root{
     --color-primario: #D2D0D3;
     --color-secundario: #302E2F;
+    --color-terciario: #000;
+}
+
+.contenedor{
+    width: 100%;
+    display: grid;
+    background: var(--color-secundario);
+    color: var(--color-primario)
+}
+
+
+nav{
+    width: 100%;
+    grid-area: menu;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav > img{
+    height:  100%;
 }
