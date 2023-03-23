@@ -1,20 +1,8 @@
 .contenedor{
-    grid-template-rows: 15vh 10vh minmax(75vh,auto);
+    grid-template-rows: 15vh  85vh;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:"menu           menu"
-                        "titulo         titulo"
                         "formulario     formulario";
-}
-
-h2{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-area: titulo;
-    font-size: 1.7em;
-    text-transform: uppercase;
-    text-align: center;
 }
 
 form{
@@ -25,19 +13,22 @@ form{
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 form > .datos > h3,
 form > .dias > h3{
     font-size: 1.2em;
     text-align: center;
+    margin: 1em auto 0 auto;
 }
 form > .datos > div,
 form > .dias > div{
     width: 100%;
-    height: 150px;
+    max-width: 500px;
+    height: 160px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin: .5em auto;
     background: rgba(255, 255, 255, .2);
@@ -46,14 +37,6 @@ form > .dias > div{
 form > .datos > div > div,
 form > .dias > div > div{
     width: 70%;
-    position: relative;
-    margin: 1em .5em;
-}
-form > .datos > div > div > label{
-    text-align: center;
-    position: absolute;
-    top: -1.2em;
-    text-align: center;
 }
 form > .datos > div > div > input,
 form > .dias > div > div > input,
@@ -64,22 +47,36 @@ form > .dias > div > div > select{
     color: var(--color-primario);
     border: 1px solid var(--color-primario);
     border-radius: 3px;
+    padding: 0 10px;
 }
+form > .datos > div > div > input:focus,
+form > .dias > div > div > input:focus,
+form > .dias > div > div > select:focus{
+    padding: 0 10px;
+    outline: none;
+}
+
 form > .dias > div > div > select > option{
     border: none;
     color: var(--color-secundario);
+    padding: 10px;
 }
 form > input{
-    width: 150px;
-    height: 50px;
+    width: 200px;
     margin: auto;
-    border:none;
-    border-radius: 5px;
-    background: var(--color-terciario);
-    color: var(--color-primario);
+    font-size: 1.3rem;
     cursor:  pointer;
 }
-form > input:hover{
-    background: var(--color-primario);
-    color: var(--color-terciario);
+
+
+@media screen and (min-width:720px) {
+    form > .datos > div,
+    form > .dias > div{
+        height: 180px;
+    }
+    form > .datos > div > div > input,
+    form > .dias > div > div > input,
+    form > .dias > div > div > select{
+        height: 40px;
+    }
 }

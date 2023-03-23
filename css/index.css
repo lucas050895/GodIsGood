@@ -2,16 +2,19 @@
   grid-template-rows: 80vh 20vh;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:"imagen imagen"
-                        "boton  boton";
+                      "boton  boton";
 }
 
-.contenedor section{
+.contenedor div{
+  max-width: 720px;
+  height: 80vh;
+  margin: auto;
   grid-area: imagen;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.contenedor section img{
+.contenedor div img{
   width: 100%;
 }
 
@@ -25,7 +28,7 @@
   --b: 3px;
   --s: .45em;
   
-  padding: .8em;
+  padding: 1em;
   color: var(--color-primario);
   --_p: var(--s);
   background:
@@ -46,4 +49,8 @@
   color: var(--color-primario);
   text-transform: uppercase;
   text-decoration: none;
+}
+
+
+@media screen and (min-width:720px){
 }

@@ -1,0 +1,34 @@
+.contenedor{
+    grid-template-rows: 15vh  85vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"menu       menu"
+                        "aviso      aviso";
+}
+
+div{
+    width: 90%;
+    grid-area: aviso;
+    margin: auto;
+    text-align: center;
+}
+div > section > h2{
+    font-size: 2em;
+    text-transform: uppercase;
+}
+div > .reservado > h3{
+    font-size: 2em;
+    color: #008f39;
+}
+div > .noreservado > h3{
+    font-size: 2em;
+    color: #FF0000;
+}
+div > section > p{
+    width: 80%;
+    margin: auto;
+    font-size: 1.5em;
+}
+div > p{
+    font-size: 1.5em;
+    margin-top: 3em;
+}

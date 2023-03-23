@@ -10,13 +10,13 @@
 </head>
 <body>
     <main class="contenedor">
-        <section>
+        <div>
             <img src="img/logo-sin.png" alt="Logo de la barberia">
-        </section>
+        </div>
 
         <section>
             <button class="button" role="button">
-                <a href="#">Reservar turno</a>
+                <a href="enlaces/reservar_turno.php">sacar turno</a>
             </button>
         </section>
     </main>
