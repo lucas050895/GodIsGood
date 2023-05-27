@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Raleway:ital,wght@1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: var(--fuente-secundaria);
+}
+
+:root{
+    --color-primario: #D2D0D3;
+    --color-secundario: #302E2F;
+    --color-terciario: #000;
+
+    --fuente-primaria: 'Raleway';
+    --fuente-secundaria: 'Nunito Sans';
+}
+
+/*      CONTENEDOR DE PAGINAS      */
+.contenedor{
+    width: 100%;
+    display: grid;
+    background: var(--color-secundario);
+    color: var(--color-primario);
+    font-family: var(--fuente-secundaria);
+}
+
+/*      MENU      */
+nav{
+    width: 100%;
+    max-width: 920px;
+    height: 15vh;
+    grid-area: menu;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+nav > a{
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+nav > a > img{
+    height: 80%;
+}
+nav > h1{
+    height: 80%;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    font-family: var(--fuente-primaria);
+}
+
+/*      BOTON GENERAL      */
+.button{
+    --b: 3px;
+    --s: .45em;
+
+    padding: 1em;
+    color: var(--color-primario);
+    --_p: var(--s);
+    background:
+        conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color-primario) 0)
+        var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+
+    border: 0;
+}
+.button:hover,
+.button:focus-visible{
+    --_p: 0px;
+    outline-color: var(--color-primario);
+    outline-offset: .05em;
+}
+.button a{
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    text-transform: uppercase;
+    text-decoration: none;
+}

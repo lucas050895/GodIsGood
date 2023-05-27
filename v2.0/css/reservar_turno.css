@@ -1,0 +1,54 @@
+.contenedor{
+    grid-template-rows: 15vh  85vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"menu           menu"
+                        "formulario     formulario";
+}
+
+form{
+    width: 90%;
+    height: 100%;
+    grid-area: formulario;
+    margin: auto;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form > .dias > h3{
+    font-size: 1.2em;
+    text-align: center;
+    margin: 1em auto 0 auto;
+}
+form > .dias > div{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: .5em auto;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 5px;
+}
+form > .dias > div > div{
+    width: 100px;
+    height: 80px;
+    margin: .2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form > .dias > div > div > label{
+    font-size: 1.2em;
+}
+form > .dias > div > div > input{
+    width: 100px;
+    height: 30px;
+    border-radius: 0;
+    border: 12px;
+    cursor:  pointer;
+}

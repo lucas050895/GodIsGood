@@ -1,0 +1,56 @@
+.contenedor{
+  grid-template-rows: 80vh 20vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:"imagen imagen"
+                      "boton  boton";
+}
+
+.contenedor div{
+  max-width: 720px;
+  height: 80vh;
+  margin: auto;
+  grid-area: imagen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contenedor div img{
+  width: 100%;
+}
+
+.contenedor section:nth-child(2){
+  grid-area: boton;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button{
+  --b: 3px;
+  --s: .45em;
+  
+  padding: 1em;
+  color: var(--color-primario);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color-primario) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+
+  border: 0;
+}
+.button:hover,
+.button:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color-primario);
+  outline-offset: .05em;
+}
+.contenedor section:nth-child(2) .button a{
+  font-size: 1.5rem;
+  color: var(--color-primario);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+
+@media screen and (min-width:720px){
+}
