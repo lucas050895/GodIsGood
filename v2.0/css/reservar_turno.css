@@ -1,5 +1,5 @@
 .contenedor{
-    grid-template-rows: 15vh  85vh;
+    grid-template-rows: 15vh  minmax(85vh, auto) ;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:"menu           menu"
                         "formulario     formulario";
@@ -7,7 +7,6 @@
 
 form{
     width: 90%;
-    height: 100%;
     grid-area: formulario;
     margin: auto;
     text-transform: uppercase;
@@ -15,40 +14,87 @@ form{
     flex-direction: column;
     align-items: center;
 }
-form > .dias > h3{
-    font-size: 1.2em;
+form > .titulo > h2{
+    font-size: 1.8em;
     text-align: center;
-    margin: 1em auto 0 auto;
+    margin: .8em auto;
 }
-form > .dias > div{
+
+/*  LINEA DE RADIO EN CADA TAB  */
+.tabset input[type="radio"] {
+    position: absolute;
+    left: -200vw;
+}
+
+/*  OCULTAR LOS TABS NO SELECCIONADO*/
+.tabset .tab-panel {
+    display: none;
+}
+
+/*  MOSTRAR CADA INFORMACION DE CADA TAB    */
+.tabset input:first-child:checked ~ .tab-panels .tab-panel:first-child,
+.tabset input:nth-child(3):checked ~ .tab-panels .tab-panel:nth-child(2),
+.tabset input:nth-child(5):checked ~ .tab-panels .tab-panel:nth-child(3),
+.tabset input:nth-child(7):checked ~ .tab-panels .tab-panel:nth-child(4),
+.tabset input:nth-child(9):checked ~ .tab-panels .tab-panel:nth-child(5),
+.tabset input:nth-child(11):checked ~ .tab-panels .tab-panel:nth-child(6) {
+    display: block;
+}
+  
+/*  ESTILOS DE CADA TABS    */
+.tabset > label {
+    position: relative;
+    display: inline-block;
+    padding: 10px 10px 15px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+}
+  
+.tabset > label::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+    width: 22px;
+    height: 4px;
+    background: var(--color-primario);
+}
+
+/* .tabset > label:hover,
+.tabset > input:focus + label,
+.tabset > input:checked + label {
+    color: #06c;
+} */
+  
+.tabset > label:hover::after,
+.tabset > input:focus + label::after,
+.tabset > input:checked + label::after {
+    background: var(--color-cuartenario);
+}
+  
+.tabset > input:checked + label {
+    border-color: var(--color-primario);
+}
+  
+.tab-panel {
+    margin-top: 1em;
+    padding: 1.5em 0 0 0;
+    border-top: 1px solid var(--color-primario);
+}
+.tab-panel > div{
     width: 100%;
-    max-width: 500px;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: .5em auto;
-    background: rgba(255, 255, 255, .2);
-    border-radius: 5px;
 }
-form > .dias > div > div{
-    width: 100px;
-    height: 80px;
-    margin: .2em;
+.tab-panel > div  {
+    width: 80%;
+    height: 50px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-}
-form > .dias > div > div > label{
-    font-size: 1.2em;
-}
-form > .dias > div > div > input{
-    width: 100px;
-    height: 30px;
-    border-radius: 0;
-    border: 12px;
-    cursor:  pointer;
+    margin: 1em auto;
+    color: var(--color-terciario);
+    background: var(--color-primario);
+    font-size: 1.3em;
+    border-radius: 5px;
+    cursor: pointer;
 }
