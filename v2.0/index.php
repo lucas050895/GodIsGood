@@ -9,14 +9,16 @@
     <link rel="stylesheet" href="css/general.css">
 </head>
 <body>
+    <!-- CONTENEDOR GENERAL DE ESTA PÁGINA -->
     <main class="contenedor">
         <div>
             <img src="img/logo-sin.png" alt="Logo de la barberia">
         </div>
 
+        <!-- SECCION PARA LOS BOTONES -->
         <section>
             <button class="button" role="button">
-                <a href="enlaces/reservar_turno.php">sacar turno</a>
+                <a href="enlaces/turnos.php">sacar turno</a>
             </button>
         </section>
         

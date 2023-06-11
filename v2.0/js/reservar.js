@@ -1,8 +1,14 @@
-const lunesUno = document.getElementsByClassName("btn10Lu");
-function lunes10() {
-    if (lunesUno.style.display == "none") {
-        lunesUno.style.display = "block";
-    } else {
-        lunesUno.style.display = "none";
-    }
-}
+const abrirModal = document.querySelector('.reservar');
+const modal = document.querySelector('.modal-fondo');
+const cerrarModal = document.querySelector('.cerrarModal')
+
+abrirModal.addEventListener('click', (e)=>{
+    e.preventDefault();
+    modal.classList.add('modal-show');
+});
+
+cerrarModal.addEventListener('click', (e)=>{
+    e.preventDefault();
+    modal.classList.remove('modal-show');
+});
+

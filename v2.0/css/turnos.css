@@ -1,26 +1,28 @@
+/*  CONTENEDOR DE ESTA PAGINA   */
 .contenedor{
     grid-template-rows: 15vh  minmax(85vh, auto) ;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:"menu           menu"
-                        "formulario     formulario";
+                        "contenido     contenido";
 }
 
-form{
+/*  SECCION CONTENENIDO GENERAL */
+.contenido{
     width: 90%;
-    grid-area: formulario;
+    grid-area: contenido;
     margin: auto;
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-form > .titulo > h2{
+.contenido > .titulo > h2{
     font-size: 1.8em;
     text-align: center;
     margin: .8em auto;
 }
 
-/*  LINEA DE RADIO EN CADA TAB  */
+/*  LINEA DE RADIO EN CADA PESTAÑA  */
 .tabset input[type="radio"] {
     position: absolute;
     left: -200vw;
@@ -31,7 +33,7 @@ form > .titulo > h2{
     display: none;
 }
 
-/*  MOSTRAR CADA INFORMACION DE CADA TAB    */
+/*  MOSTRAR CADA INFORMACION DE CADA PESTAÑA    */
 .tabset input:first-child:checked ~ .tab-panels .tab-panel:first-child,
 .tabset input:nth-child(3):checked ~ .tab-panels .tab-panel:nth-child(2),
 .tabset input:nth-child(5):checked ~ .tab-panels .tab-panel:nth-child(3),
@@ -82,19 +84,25 @@ form > .titulo > h2{
     padding: 1.5em 0 0 0;
     border-top: 1px solid var(--color-primario);
 }
-.tab-panel > div{
+.tab-panel > section{
     width: 100%;
 }
-.tab-panel > div  {
-    width: 80%;
-    height: 50px;
+.tab-panel > section > div{
+    width: 100%;
+    height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin: 1em auto;
+    align-items: center;
+}
+.tab-panel > section > div > div{
+    width: 150px;
+    height: 50px;
+    margin: .5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--color-terciario);
     background: var(--color-primario);
     font-size: 1.3em;
     border-radius: 5px;
-    cursor: pointer;
 }

@@ -1,3 +1,9 @@
+<!-- 
+
+    MENU GENERAL 
+
+-->
+
 <nav>
     <a href="../index.php">
         <img src="../img/logo-sin.png" alt=""  sizes="(max-width: 320px)">
