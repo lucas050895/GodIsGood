@@ -106,3 +106,91 @@
     font-size: 1.3em;
     border-radius: 5px;
 }
+
+.tab-panel > section > div > div > a{
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--color-terciario);
+}
+
+/*MODAL*/
+.fondoModal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #00000055;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s;
+}
+.fondoModal > .contenidoModal{
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 5px;
+    padding: 2em;
+    background: var(--color-primario);
+    display: grid;
+    grid-gap: 1em;
+    place-items: center;
+    grid-auto-columns: 100%;
+}
+.fondoModal > .contenidoModal > div:nth-child(1){
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.fondoModal > .contenidoModal > .botones{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.fondoModal > .contenidoModal > .botones > a,
+.fondoModal > .contenidoModal > .botones > input{
+    width: 100px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-terciario);
+    border-radius: 5px;
+    color: var(--color-secundario);
+    background: var(--color-primario);
+    text-decoration: none;
+}
+.fondoModal > .contenidoModal > .botones > a:hover{
+    background: var(--color-desaprobado);
+    color: var(--color-primario);
+}
+.fondoModal > .contenidoModal > .botones > input:hover{
+    background: var(--color-aprobado);
+    color: var(--color-primario);
+}
+.fondoModal > .contenidoModal > div > div{
+    margin: .5em auto;
+}
+.fondoModal > .contenidoModal > div > div > label{
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+    color: var(--color-terciario);
+}
+
+.modal-show{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+}

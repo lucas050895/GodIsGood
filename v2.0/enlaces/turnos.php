@@ -60,6 +60,19 @@
                         <?php
                             include("../base/mostrar_horas_lunes.php");
                         ?>
+                        
+                        <div class="fondoModal">
+                            <div class="contenidoModal">
+                                <div>
+                                    <label for="">Nombre</label>
+                                    <input type="text" name="" id="">
+                                </div>
+                                <div class="botones">
+                                    <input type="button" value="Reservar">
+                                    <a href="#" class="cierreModal">Cerrar</a>
+                                </div>
+                            </div>
+                        </div>
                    </section>
 
                    <!-- CONTENIDO DE LA PESTAÑA 2 -->

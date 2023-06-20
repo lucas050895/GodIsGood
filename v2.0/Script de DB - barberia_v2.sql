@@ -35,3 +35,5 @@ value
 
 select *
 from datos;
+
+UPDATE `barberia_v2`.`datos` SET `nombre` = '' WHERE (`id_datos` = '5');

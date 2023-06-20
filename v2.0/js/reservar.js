@@ -1,6 +1,6 @@
-const abrirModal = document.querySelector('.reservar');
-const modal = document.querySelector('.modal-fondo');
-const cerrarModal = document.querySelector('.cerrarModal')
+const abrirModal = document.querySelector('.turno');
+const modal = document.querySelector('.fondoModal');
+const cerrarModal = document.querySelector('.cierreModal')
 
 abrirModal.addEventListener('click', (e)=>{
     e.preventDefault();
