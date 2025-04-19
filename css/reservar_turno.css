@@ -1,0 +1,82 @@
+.contenedor{
+    grid-template-rows: 15vh  85vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"menu           menu"
+                        "formulario     formulario";
+}
+
+form{
+    width: 90%;
+    height: 100%;
+    grid-area: formulario;
+    margin: auto;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+form > .datos > h3,
+form > .dias > h3{
+    font-size: 1.2em;
+    text-align: center;
+    margin: 1em auto 0 auto;
+}
+form > .datos > div,
+form > .dias > div{
+    width: 100%;
+    max-width: 500px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: .5em auto;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 5px;
+}
+form > .datos > div > div,
+form > .dias > div > div{
+    width: 70%;
+}
+form > .datos > div > div > input,
+form > .dias > div > div > input,
+form > .dias > div > div > select{
+    width: 100%;
+    height: 35px;
+    background: transparent;
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+    border-radius: 3px;
+    padding: 0 10px;
+}
+form > .datos > div > div > input:focus,
+form > .dias > div > div > input:focus,
+form > .dias > div > div > select:focus{
+    padding: 0 10px;
+    outline: none;
+}
+
+form > .dias > div > div > select > option{
+    border: none;
+    color: var(--color-secundario);
+    padding: 10px;
+}
+form > input{
+    width: 200px;
+    margin: auto;
+    font-size: 1.3rem;
+    cursor:  pointer;
+}
+
+
+@media screen and (min-width:720px) {
+    form > .datos > div,
+    form > .dias > div{
+        height: 180px;
+    }
+    form > .datos > div > div > input,
+    form > .dias > div > div > input,
+    form > .dias > div > div > select{
+        height: 40px;
+    }
+}
