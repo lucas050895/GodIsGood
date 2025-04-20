@@ -26,7 +26,9 @@
                 </h2>
                 <h3>¡Tu turno se reservo exitoxamente!</h3>
 
-                <p>Tenes turno el dia <?php echo $fecha?> a las <?php echo $hora?> </p>
+                <p>Tenes turno el dia <?php echo 
+                                            date("d/m", strtotime($fecha))
+                ?> a las <?php echo substr($hora, 0, -3)?> </p>
             </section>
 
             <p>Si no podes asistir, envianos un mensaje via WhatsApp o acercate al local.</p>

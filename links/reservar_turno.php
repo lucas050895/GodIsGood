@@ -20,32 +20,32 @@
         ?>
 
         <form action="../php/registrar_turno.php" method="post">
-            <div class="datos">
-                <h3>ingresa tus datos</h3>
-                <div>
-                    <div>
-                        <label for="nombre">Nombre (*)</label>
-                        <input id="nombre" name="nombre" type="text" required>
-                    </div>
 
-                    <div>
-                        <label for="celular">Celular (*)</label>
-                        <input id="celular" name="celular" type="tel" size="10" required>
-                    </div>
-                </div>
-            </div>
+            <div>
+                <fieldset>
+                    <legend>Datos</legend>
+                        <div>
+                            <label for="nombre">Nombre (*)</label>
+                            <input id="nombre" name="nombre" type="text" required>
+                        </div>
 
-            <div class="dias">
-                <h3>Elegi el dia y horario</h3>
-                <div>
+                        <div>
+                            <label for="celular">Celular (*)</label>
+                            <input id="celular" name="celular" type="tel" size="10" required>
+                        </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Fecha y horario</legend>
                     <div>
-                        <label for="fecha">Dia</label>
+                        <label for="fecha">Día</label>
                         <input type="date" id="fecha" name="fecha" onchange="manejarFechaSeleccionada()" required min=<?php $hoy=date("Y-m-d"); echo $hoy;?>>
                     </div>
+
                     <div>
                         <label for="hora">Horario</label>
                         <select name="hora" id="hora" required>
-                            <option value="" selected disabled>Seleccionar una hora</option>
+                            <option value="" selected disabled>Seleccionar un horario</option>
                             <?php
                                 $consulta = "SELECT * FROM horas";
                                 $resultado = mysqli_query($conexion, $consulta);
@@ -63,14 +63,13 @@
                             ?>
                         </select>
                     </div>
-                </div>
+                </fieldset>
+                        
+                <input type="submit" name="enviar" value="Reservar" class="button">
             </div>
-
-            <input type="submit" name="enviar" value="RESERVAR" class="button">
         </form>
 
     </main>
-
 
     <script src="../js/script.js"></script>
 </body>
