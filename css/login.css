@@ -1,0 +1,68 @@
+@import url(general.css);
+@import url(nav.css);
+
+main{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-secundario);
+}
+
+main > section{
+    width: 100%;
+    height: calc(100% - 250px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}	
+
+main > section > form{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+}
+main > section > form > fieldset{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+main > section > form > fieldset > legend{
+    text-transform: uppercase;
+    padding: 0 30px;
+}
+main > section > form > fieldset > div{
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+main > section > form > fieldset > div  input{
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    background-color: var(--color-primario);
+    color: var(--color-terciario);
+}
+
+main > section > form > input{
+    width: 150px;
+    height: 60px;
+    margin: 2em auto;
+    border: none;
+    color: var(--color-terciario);
+    background-color: var(--color-primario);
+}
+
+
+@media screen and (min-width: 768px) {
+    main > section{
+        height: calc(100% - 150px);
+    }	
+    
+}
