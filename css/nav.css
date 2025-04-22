@@ -1,0 +1,31 @@
+/*      HEADER      */
+header{
+    max-width: 600px;
+    height: 120px;
+    margin: auto;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--color-secundario);
+}
+header > div{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: var(--color-terciario);
+}
+header > div > img{
+    height: 80%;
+}
+
+header > a{
+    width: 200px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+}
