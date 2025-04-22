@@ -1,29 +1,52 @@
-.contenedor{
-  grid-template-rows: 80vh 20vh;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:"imagen imagen"
-                      "boton  boton";
+@import url(general.css);
+@import url(nav.css);
+
+
+main{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-secundario);
 }
 
-.contenedor div{
-  max-width: 720px;
-  height: 80vh;
+main > div{
+  min-height: 500px;
   margin: auto;
-  grid-area: imagen;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.contenedor div img{
+main div img{
   width: 100%;
 }
 
-.contenedor section:nth-child(2){
-  grid-area: boton;
+
+
+main > section{
+  width: 100%;
+  height: 200px;
+  margin: 2em auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+main > section> a{
+  margin: 1em auto;
+  color: var(--color-primario);
+}
+
+
+
+
+
+
+
+
+
+
 .button{
   --b: 3px;
   --s: .45em;
@@ -44,13 +67,9 @@
   outline-color: var(--color-primario);
   outline-offset: .05em;
 }
-.contenedor section:nth-child(2) .button a{
+main section:nth-child(2) .button a{
   font-size: 1.5rem;
   color: var(--color-primario);
   text-transform: uppercase;
   text-decoration: none;
-}
-
-
-@media screen and (min-width:720px){
 }

@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>God Is Good</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/general.css">
 </head>
 <body>
-    <main class="contenedor">
+    <main>
         <div>
             <img src="img/logo-sin.png" alt="Logo de la barberia">
         </div>
 
         <section>
             <button class="button" role="button">
-                <a href="links/reservar_turno.php">sacar turno</a>
+                <a href="links/reservar.php">sacar turno</a>
             </button>
+
+            <a href="links/login.php">Iniciar Sesión</a>
         </section>
         
     </main>

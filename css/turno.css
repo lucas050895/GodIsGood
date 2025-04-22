@@ -1,13 +1,18 @@
-.contenedor{
-    grid-template-rows: 15vh  85vh;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:"menu       menu"
-                        "aviso      aviso";
+@import url(general.css);
+@import url(nav.css);
+
+main{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-secundario);
 }
 
 div{
     width: 90%;
-    grid-area: aviso;
+    height: calc(100% - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     margin: auto;
     text-align: center;
 }

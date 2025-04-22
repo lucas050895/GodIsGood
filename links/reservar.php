@@ -8,20 +8,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar Turno</title>
-    <link rel="stylesheet" href="../css/reservar_turno.css">
-    <link rel="stylesheet" href="../css/general.css">
+    <title>Reservar Turno - God Is Good</title>
+    <link rel="stylesheet" href="../css/reservar.css">
 
 </head>
 <body>
-    <main class="contenedor">
+    <main>
         <?php
-            include("../layout/menu.php");
+            include("../layout/header.php");
         ?>
-
-        <form action="../php/registrar_turno.php" method="post">
-
-            <div>
+    
+        <section>
+            <form action="../php/registrar_turno.php" method="post">
                 <fieldset>
                     <legend>Datos</legend>
                         <div>
@@ -31,7 +29,7 @@
 
                         <div>
                             <label for="celular">Celular (*)</label>
-                            <input id="celular" name="celular" type="tel" size="10" required>
+                            <input id="celular" name="celular" type="number" size="10" required>
                         </div>
                 </fieldset>
 
@@ -66,8 +64,10 @@
                 </fieldset>
                         
                 <input type="submit" name="enviar" value="Reservar" class="button">
-            </div>
-        </form>
+            </form>
+            <a href="../links/login.php">Iniciar Sesión</a>
+        </section>
+
 
     </main>
 
