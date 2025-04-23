@@ -1,0 +1,46 @@
+@import url(general.css);
+@import url(nav.css);
+
+
+main{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-secundario);
+}
+
+main > section{
+    margin: 1em auto;
+}
+main > section > h2{
+    width: 100%;
+    height: 60px;
+    margin: 1em auto 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main > section > h2 > span{
+    margin: 0 10px;
+    padding: 10px;
+    font-size: 1.5rem;
+    background-color: var(--color-secundario);
+    border: 1px solid var(--color-primario);
+}
+
+
+main > section > table{
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+main > section > table > thead > tr > th{
+    width: 30%;
+    text-transform: uppercase;
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+}
+main > section > table > tbody > tr > td{
+    text-align: center;
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+}
