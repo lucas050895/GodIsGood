@@ -35,10 +35,13 @@
                 </thead>
                 <tbody>
                     <?php
-                        $consulta = "SELECT * FROM datos WHERE fecha = CURDATE() ORDER BY hora ASC";
+                        $consulta = "SELECT *
+                                        FROM datos
+                                        WHERE fecha = CURDATE() AND hora >= CURTIME()
+                                        ORDER BY hora ASC";
                         $resultado = mysqli_query($conexion, $consulta);
                         
-                        if ($resultado ){
+                        if ($resultado->num_rows > 0) {
                             while($row = $resultado->fetch_array()){
                                 ?>
                                     <tr>
@@ -48,6 +51,14 @@
                                     </tr>
                                 <?php
                             }
+                        }else{
+                            ?>
+                                <tr>
+                                    <td colspan="3">
+                                        <?php echo"Por el momento no hay turnos registrados."; ?>
+                                    </td>
+                                </tr>
+                            <?php
                         }
                     ?>
                 </tbody>
