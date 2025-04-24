@@ -41,12 +41,12 @@
                     <legend>login</legend>
                     <div>
                         <label for="usuario">Usuario</label>
-                        <input type="text" id="usuario" name="usuario" required>
+                        <input type="text" id="usuario" name="usuario" required placeholder="admin">
                     </div>
 
                     <div>
                         <label for="contraseña">Contraseña</label>
-                        <input type="text" id="contraseña" name="contraseña" required>
+                        <input type="text" id="contraseña" name="contraseña" required placeholder="admin">
                     </div>
                 </fieldset>
                 <input type="submit" id="entrar" name="entrar" value="Entrar">
