@@ -44,3 +44,11 @@ main > section > table > tbody > tr > td{
     background-color: var(--color-secundario);
     color: var(--color-primario);
 }
+
+
+tr:nth-child(1) > td{
+    width: 100%;
+    height: 80px;
+    color: var(--color-primario);
+    text-transform: uppercase;
+}
