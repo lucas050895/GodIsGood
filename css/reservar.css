@@ -4,13 +4,13 @@
 
 main{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--color-secundario);
 }
 
 main > section{
     width: 100%;
-    height: calc(100% - 120px);
+    height: calc(100vh - 160px);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
