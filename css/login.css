@@ -42,9 +42,8 @@ main > section > form > fieldset > div{
     justify-content: space-evenly;
 }
 
-main > section > form > fieldset > div  input{
+main > section > form > fieldset > div > input{
     text-align: center;
-    text-transform: uppercase;
     border: none;
     background-color: var(--color-primario);
     color: var(--color-terciario);
