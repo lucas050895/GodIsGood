@@ -13,7 +13,7 @@
         if($usuario == "admin" && $contraseña == "admin"){
             session_start();
             $_SESSION['usuario'] = $usuario;
-            header("Location: dashbord.php");
+            header("Location: dashboard.php");
             exit();
         }else{
             echo "<script>alert('Usuario o contraseña incorrectos');</script>";

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashbord - God Is Good</title>
-    <link rel="stylesheet" href="../css/dashbord.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
     <main>
