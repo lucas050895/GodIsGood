@@ -1,65 +1,72 @@
-@import url(general.css);
-@import url(nav.css);
-
-
+/* CONTENEDOR GENERAL */
 main{
     width: 100%;
-    min-height: 100vh;
-    background-color: var(--color-secundario);
+    display: grid;
+    grid-template-rows: calc(100dvh - 5em - 3em);
+    grid-template-areas:"form"
+                        "login";
+    
 }
 
-main > section{
-    width: 100%;
-    height: calc(100vh - 160px);
+
+/* CONTENEDOR DE FORMULARIO */
+main > div{
+    grid-area: form;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
-
+/* FORMULARIO */
 form{
-    width: 90%;
-    max-width: 500px;
-    border-radius: 5px;
+    width: 80%;
+    max-width: 380px;
+    margin: auto;
+    padding: 1em;
     text-align: center;
+    border-radius: 5px;
     color: var(--color-primario);
     background: var(--color-terciario);
+    box-shadow: #D2D0D3 0 1px 10px;
 }
 form  > fieldset{
-    width: 90%;
-    margin: 20px auto;
-    padding: 5px;
+    width: 100%;
+    margin: 1em auto;
+    padding: 10px;
     border-color: var(--color-primario);
 }
 form > fieldset > legend{
+    padding: 0 1em;
     margin: auto;
-    padding: 0 2em;
 }
 form  > fieldset  > div{
     width: 100%;
-    max-width: 300px;
-    margin: 1em auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 form > fieldset > div > label{
     width: 35%;
     display: inline-flex;
+    text-transform: uppercase;
 }
 form > fieldset > div > input,
 form > fieldset > div > select,
 form > fieldset > div > select > option{
     width: 65%;
-    padding: 0 .5em;
+    margin: .5em 0;
     border: none;
     color: var(--color-terciario);
+    text-align: center;
 }
 form > fieldset > div > select{
     padding: 0;
 }
 form > input{
-    width: 200px;
-    margin: 1em auto;
+    width: 150px;
     font-size: 1.3rem;
+    color: var(--color-terciario);
     cursor:  pointer;
+}
+form #name{
+    text-transform: capitalize;
 }

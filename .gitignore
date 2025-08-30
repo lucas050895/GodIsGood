@@ -1,0 +1,5 @@
+# IGNORAR CONEXION
+config/conexion.php
+
+# IGNORAR SCRIPT
+Script-Barberia.sql

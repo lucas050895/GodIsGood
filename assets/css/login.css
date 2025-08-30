@@ -1,0 +1,68 @@
+/* CONTENEDOR GENERAL */
+main{
+    width: 100%;
+    height: calc(100dvh - 5em - 3em);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+/* MENSAJE */
+main > form > div{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-terciario);
+}
+
+/* FORMULARIO */
+main > form{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+main > form > fieldset{
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+main > form > fieldset > legend{
+    margin: auto;
+    padding: 0 30px;
+    text-transform: uppercase;
+    text-align: center;
+    background: #FFF;
+    color: black;
+}
+main > form > fieldset > div{
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+}
+main > form > fieldset > div > label{
+    width: 50%;
+    text-transform: uppercase;
+}
+main > form > fieldset > div > input{
+    width: 50%;
+    text-align: center;
+    border: none;
+    border: 1px solid var(--color-terciario);
+    border-radius: 2px;
+    color: var(--color-terciario);
+}
+/* BOTON DE ENTRAR */
+main > form > input{
+    width: 150px;
+    height: 60px;
+    margin: 2em auto;
+    border: none;
+    color: var(--color-terciario);
+}

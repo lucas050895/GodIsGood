@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- META -->
+    <?php include('php/pages/layout/meta.php')?>
+
+    <!-- TITLE -->
     <title>God Is Good</title>
-    <link rel="stylesheet" href="css/index.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/index.css?v=<?php echo filemtime('assets/css/index.css'); ?>">
+    <link rel="stylesheet" href="assets/css/styles.css?v=<?php echo filemtime('assets/css/styles.css'); ?>">
+
+    <!-- ICONS -->
+    <?php include('php/pages/layout/icons.php') ?>
 </head>
 <body>
     <main>
-        <div>
-            <img src="img/logo-sin.png" alt="Logo de la barberia">
+        <div class="grid">
+            <div>
+                <div>
+                    <img src="assets/img/logo-sin.png" alt="Logo de la barberia">
+                </div>
+            </div>
+
+            <div>
+                <button role="button">
+                    <a href="php/pages/reserve.php " class="button-29" role="button">Sacar Turno</a>
+                </button>
+
+                <a href="php/auth/login.php">Iniciar Sesión</a>
+            </div>
         </div>
-
-        <section>
-            <button class="button" role="button">
-                <a href="links/reservar.php">sacar turno</a>
-            </button>
-
-            <a href="links/login.php">Iniciar Sesión</a>
-        </section>
-        
     </main>
+
+    <!-- FOOTER -->
+    <?php include('php/pages/layout/footer.php')?>
 </body>
 </html>
-

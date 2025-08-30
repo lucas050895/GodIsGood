@@ -1,0 +1,6 @@
+Options -Indexes
+
+RewriteEngine On
+
+# Redireccionar a la página de acceso denegado cuando se acceda a un directorio
+ErrorDocument 403 /GodIsGood/php/pages/layout/access.php

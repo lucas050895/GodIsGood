@@ -1,15 +1,9 @@
-@import url(general.css);
-@import url(nav.css);
-
-
 main{
-    width: 100%;
-    height: 100vh;
-    background-color: var(--color-secundario);
+    height: calc(100dvh - 7em - 2em);
 }
-
 main > section{
-    margin: 1em auto;
+    height: 100%;
+    padding: 1em auto;
 }
 main > section > h2{
     width: 100%;
@@ -27,7 +21,7 @@ main > section > h2 > span{
     border: 1px solid var(--color-primario);
 }
 
-
+/* TABLA */
 main > section > table{
     width: 100%;
     max-width: 500px;
@@ -40,15 +34,16 @@ main > section > table > thead > tr > th{
     color: var(--color-secundario);
 }
 main > section > table > tbody > tr > td{
+    width: calc(100% / 3);
     text-align: center;
     background-color: var(--color-secundario);
     color: var(--color-primario);
 }
 
-
-tr:nth-child(1) > td{
+/* DATOS */
+tr > td{
     width: 100%;
-    height: 80px;
+    height: 40px;
     color: var(--color-primario);
     text-transform: uppercase;
 }
