@@ -11,12 +11,12 @@ De esta manera se evitará la superposición de turnos y fila de espera.</p>
   <tr>
   <td>
     
-  <img width="640" height="1200" alt="Inicio" src="https://github.com/user-attachments/assets/dca60cb6-d1c1-4164-9c9c-f812e08e11ff" />
+  <img width="300" height="563" alt="Inicio" src="https://github.com/user-attachments/assets/1f10f902-03c1-4d48-902c-881e9b85184f" />
   </td>
     
   <td>
     
-  <img width="640" height="1200" alt="SacarTurno" src="https://github.com/user-attachments/assets/5b20e359-6aeb-4294-b3a2-a362c5897c21" />
+  <img width="300" height="563" alt="SacarTurno" src="https://github.com/user-attachments/assets/6367ca50-90f9-491b-b96f-15be47f373fb" />
   </td>
   </tr>
 </table>
@@ -32,12 +32,12 @@ Además (próximamente) va a poder analizar las estadísticas en referencia a lo
 
   <td>
     
-  ![IniciarSesion](https://github.com/user-attachments/assets/51dc2b16-19e3-4adb-bb09-f75dd46cba42)
+  <img width="300" height="563" alt="IniciarSesion" src="https://github.com/user-attachments/assets/0982a120-afa0-4f33-b241-bb1b367856b7" />
   </td>
 
   <td>
     
-   ![TurnosReservados](https://github.com/user-attachments/assets/fa174022-5ccc-4a36-815f-cc328c301cba)
+   <img width="300" height="563" alt="TurnosReservados" src="https://github.com/user-attachments/assets/ea4cf170-3843-4017-9250-556f24b7e2e2" />
   </td>
   </tr>
 </table>
