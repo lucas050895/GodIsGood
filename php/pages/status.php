@@ -12,7 +12,6 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo filemtime('../../assets/css/styles.css'); ?>">
-
     <style>
         main{
             height: calc(100dvh - 5em - 3em);
@@ -44,6 +43,10 @@
                         $mensaje = 'Hubo un error. El turno no se registro.';
                         $clase = 'no_registrado';
                         break;
+                    case 'turno_ocupado':
+                        $mensaje = 'El turno ya se encuentra reservado.';
+                        $clase = 'no_registrado';
+                        break;
                     default:
                         $mensaje = 'Ha ocurrido un error. Inténtelo nuevamente.';
                         $clase = 'aviso';
@@ -55,9 +58,7 @@
         ?>
     </main>
 
-    <!-- HEADER -->
+    <!-- FOOTER -->
     <?php include("layout/footer.php"); ?>
-
-    <script src="../../assets/js/script.js"></script>
 </body>
 </html>

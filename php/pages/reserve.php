@@ -1,3 +1,4 @@
+<!-- CONEXION  -->
 <?php include("../../config/conexion.php"); ?>
 
 <!DOCTYPE html>
@@ -25,15 +26,15 @@
         <form action="../functions/insert.php" method="post">
             <fieldset>
                 <legend>Datos</legend>
-                    <div>
-                        <label for="name">Nombre</label>
-                        <input id="name" name="name" type="text" placeholder="Ej: Juan" required>
-                    </div>
+                <div>
+                    <label for="name">Nombre</label>
+                    <input id="name" name="name" type="text" placeholder="Ej: Juan" required>
+                </div>
 
-                    <div>
-                        <label for="cell">Celular</label>
-                        <input id="cell" name="cell" type="number" min="0" size="10" placeholder="1123456789" required>
-                    </div>
+                <div>
+                    <label for="cell">Celular</label>
+                    <input id="cell" name="cell" type="number" min="0" size="10" placeholder="1123456789" required>
+                </div>
             </fieldset>
 
             <fieldset>
@@ -43,9 +44,7 @@
                     <select name="names" id="barber" required>
                         <option value="" selected disabled>Seleccionar</option>
                         <?php 
-                            $query = "SELECT names
-                                        FROM barber
-                                        WHERE status = 1";
+                            $query = "SELECT names FROM barber WHERE status = 1";
                             $resultado = mysqli_query($conexion, $query);
 
                             while($fila = mysqli_fetch_array($resultado)): ?>
@@ -62,12 +61,11 @@
                 <div>
                     <label for="date">Fecha</label>
                     <input type="date" 
-                            id="date"
-                            name="date"
-                            min="<?php $hoy=date("Y-m-d"); echo $hoy; ?>"
-                            value="<?= date('Y-m-d'); ?>"
-                            onchange="dateSelect()" required
-                    >
+                        id="date"
+                        name="date"
+                        min="<?php $hoy=date("Y-m-d"); echo $hoy; ?>"
+                        value="<?= date('Y-m-d'); ?>"
+                        required>
                 </div>
 
                 <div>
@@ -77,7 +75,7 @@
                     </select>
                 </div>
             </fieldset>
-                    
+
             <input type="submit" name="enviar" value="Reservar" class="button">
         </form>
     </main>

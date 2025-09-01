@@ -1,5 +1,7 @@
 <?php
+    // CONEXION
     include("../../config/conexion.php");
+    // SESION
     include("../../config/sesion.php");
 ?>
 <!DOCTYPE html>
@@ -24,55 +26,74 @@
 
     <!-- MAIN -->
     <main>
-        <section>
-            <h2>
-                Estos son los turnos del dia de hoy 
-                <span>
-                    <?php echo date('d/m') ?>
-                </span>
-            </h2>
+        <div>
+            <select name="names" id="barber" required>
+                <option value="" selected disabled>Seleccionar barbero</option>
+                <?php
+                    $query = "SELECT DISTINCT name_barber FROM data";
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Celular</th>
-                        <th>Hora</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $consulta = "SELECT *
-                                    FROM data
-                                    ORDER BY date ASC, hour ASC";
-                        $resultado = mysqli_query($conexion, $consulta);
-                        
-                        if ($resultado->num_rows > 0) {
-                            while($row = $resultado->fetch_array()){
-                                ?>
-                                <tr>
-                                    <td><?= $row['name'] ?></td>
-                                    <td><?= $row['cell'] ?></td>
-                                    <td><?= substr($row['hour'], 0, -3) ?></td>
-                                </tr>
-                                <?php
-                            }
-                        } else {
-                            ?>
-                            <tr>
-                                <td colspan="3">
-                                    <?= "Por el momento no hay turnos registrados."; ?>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                    ?>
-                </tbody>
-            </table>
-        </section>
+                    $resultado = mysqli_query($conexion, $query);
+                    while($row = mysqli_fetch_array($resultado)): ?>
+                        <option value="<?= htmlspecialchars($row['name_barber']); ?>">
+                            <?= htmlspecialchars($row['name_barber']); ?>
+                        </option>
+                <?php endwhile ?>
+            </select>
+
+            <div id="filtro-opciones">
+                <label>
+                    <input type="radio" name="horaFiltro" value="actual" checked>
+                    Hora actual
+                </label>
+                <label>
+                    <input type="radio" name="horaFiltro" value="todos">
+                    Todos
+                </label>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Celular</th>
+                    <th>Hora</th>
+                </tr>
+            </thead>
+            <tbody id="turnos-body">
+                <tr>
+                    <td colspan="3">Seleccioná un barbero para ver sus turnos.</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
 
-    <!-- HEADER -->
+    <!-- FOOTRE -->
     <?php include("layout/footer.php"); ?>
+
+    <!-- SCRIPT -->
+    <script>
+        function cargarTurnos() {
+            const barber = document.getElementById('barber').value;
+            const filtro = document.querySelector('input[name="horaFiltro"]:checked').value;
+
+            if (!barber) return;
+
+            fetch('../functions/filtre.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'barber=' + encodeURIComponent(barber) + '&filtro=' + encodeURIComponent(filtro)
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('turnos-body').innerHTML = data;
+            });
+        }
+
+        document.getElementById('barber').addEventListener('change', cargarTurnos);
+        document.querySelectorAll('input[name="horaFiltro"]').forEach(radio => {
+            radio.addEventListener('change', cargarTurnos);
+        });
+    </script>
 </body>
 </html>
