@@ -24,15 +24,15 @@ form{
     padding: 1em;
     text-align: center;
     border-radius: 5px;
-    color: var(--color-primario);
-    background: var(--color-terciario);
+    color: var(--color-one);
+    background: var(--color-three);
     box-shadow: #D2D0D3 0 1px 10px;
 }
 form  > fieldset{
     width: 100%;
     margin: 1em auto;
     padding: 10px;
-    border-color: var(--color-primario);
+    border-color: var(--color-one);
 }
 form > fieldset > legend{
     padding: 0 1em;
@@ -55,7 +55,7 @@ form > fieldset > div > select > option{
     width: 65%;
     margin: .5em 0;
     border: none;
-    color: var(--color-terciario);
+    color: var(--color-three);
     text-align: center;
 }
 form > fieldset > div > select{
@@ -64,7 +64,7 @@ form > fieldset > div > select{
 form > input{
     width: 150px;
     font-size: 1.3rem;
-    color: var(--color-terciario);
+    color: var(--color-three);
     cursor:  pointer;
 }
 form #name{

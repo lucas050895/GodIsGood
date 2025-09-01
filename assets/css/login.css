@@ -7,6 +7,8 @@ main{
     justify-content: space-around;
     align-items: center;
 }
+
+
 /* MENSAJE */
 main > form > div{
     width: 100%;
@@ -14,8 +16,9 @@ main > form > div{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-terciario);
+    background: var(--color-three);
 }
+
 
 /* FORMULARIO */
 main > form{
@@ -37,8 +40,8 @@ main > form > fieldset > legend{
     padding: 0 30px;
     text-transform: uppercase;
     text-align: center;
-    background: #FFF;
-    color: black;
+    background: var(--color-one);
+    color: var(--color-two);
 }
 main > form > fieldset > div{
     width: 100%;
@@ -54,9 +57,9 @@ main > form > fieldset > div > input{
     width: 50%;
     text-align: center;
     border: none;
-    border: 1px solid var(--color-terciario);
+    border: 1px solid var(--color-three);
     border-radius: 2px;
-    color: var(--color-terciario);
+    color: var(--color-three);
 }
 /* BOTON DE ENTRAR */
 main > form > input{
@@ -64,5 +67,5 @@ main > form > input{
     height: 60px;
     margin: 2em auto;
     border: none;
-    color: var(--color-terciario);
+    color: var(--color-three);
 }
