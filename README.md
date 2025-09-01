@@ -11,12 +11,12 @@ De esta manera se evitará la superposición de turnos y fila de espera.</p>
   <tr>
   <td>
     
-  ![Inicio](https://github.com/user-attachments/assets/02eb59fb-4391-4fc5-96b2-767cd5637bbc)
+  <img width="640" height="1200" alt="Inicio" src="https://github.com/user-attachments/assets/dca60cb6-d1c1-4164-9c9c-f812e08e11ff" />
   </td>
     
   <td>
     
-  ![SacarTurno](https://github.com/user-attachments/assets/610a9d03-da14-4bd5-ab16-94c43945df39)
+  <img width="640" height="1200" alt="SacarTurno" src="https://github.com/user-attachments/assets/5b20e359-6aeb-4294-b3a2-a362c5897c21" />
   </td>
   </tr>
 </table>
