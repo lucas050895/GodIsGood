@@ -7,6 +7,8 @@
 <p>El objetivo de este sitio es brindar un óptimo servicio a los clientes. Es por eso que a través del sistema van a poder agendar turnos con sus datos, fecha y horario que mejor les convenga.
 De esta manera se evitará la superposición de turnos y fila de espera.</p>
 
+<p><i>Las siguientes vistas son de dispositivos moviles</i></p>
+
 <table>
   <tr>
   <td>
