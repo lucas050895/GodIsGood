@@ -1,43 +1,37 @@
 <?php
-    // CONEXION
-    include("../../config/conexion.php");
-    // SESION
-    include("../../config/sesion.php");
+    // Carga de funciones auxiliares y configuración de conexión PDO
+    include("../../config/function.php");
+    // Carga de ruta URL
+    require_once __DIR__ . '/../../config/app.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- META -->
+    <!-- Metadatos y configuración del documento -->
     <?php include('layout/meta.php')?>
 
-    <!-- TITLE -->
+    <!-- Título de la página -->
     <title>Dashbord - God Is Good</title>
 
-    <!-- CSS -->
+    <!-- Estilos principales con control de caché -->
     <link rel="stylesheet" href="../../assets/css/dashboard.css?v=<?php echo filemtime('../../assets/css/dashboard.css'); ?>">
     <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo filemtime('../../assets/css/styles.css'); ?>">
 
-    <!-- ICONS -->
+    <!-- Íconos personalizados para mejorar la identidad visual del sitio -->
     <?php include('layout/icons.php') ?>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- Inclusión del componente de encabezado desde layout/header.php -->
     <?php include("layout/header.php"); ?>
 
-    <!-- MAIN -->
+    <!-- Main -->
     <main>
         <div>
             <select name="names" id="barber" required>
                 <option value="" selected disabled>Seleccionar barbero</option>
-                <?php
-                    $query = "SELECT DISTINCT name_barber FROM data";
-
-                    $resultado = mysqli_query($conexion, $query);
-                    while($row = mysqli_fetch_array($resultado)): ?>
-                        <option value="<?= htmlspecialchars($row['name_barber']); ?>">
-                            <?= htmlspecialchars($row['name_barber']); ?>
-                        </option>
-                <?php endwhile ?>
+                <?php 
+                    selectBarber($conexion); 
+                ?>
             </select>
 
             <div id="filtro-opciones">
@@ -68,7 +62,7 @@
         </table>
     </main>
 
-    <!-- FOOTRE -->
+    <!-- Inclusión del componente footer desde layout/footer.php -->
     <?php include("layout/footer.php"); ?>
 
     <!-- SCRIPT -->

@@ -1,5 +1,10 @@
 <?php    
-// Evita acceso directo por URL
+    /**
+    * Protección contra acceso directo por URL.
+    * Este archivo está diseñado para ser incluido como componente visual.
+    * Si se accede directamente desde el navegador, se ejecuta el script
+    * de control ubicado en '../../../config/access.php' y se interrumpe la ejecución.
+    */
     if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
         exit('' .  include("../../../config/access.php") . '');
     }
@@ -7,9 +12,9 @@
 
 <header>
     <div>
-        <a href="http://lucasconde.ddns.net/GodIsGood/">
+        <a href="<?php echo BASE_URL; ?>">
             <div>
-                <img src="http://lucasconde.ddns.net/GodIsGood/assets/img/logo-sin.png" alt="Logo de la barberia"  sizes="(max-width: 320px)">
+                <img src="<?php echo BASE_URL; ?>/assets/img/logo-sin.png" alt="Logo de la barberia"  sizes="(max-width: 320px)">
             </div>
         </a>
 
@@ -22,13 +27,13 @@
 
             if ($currentPage == $loginPage) {
                 ?>
-                    <a href="http://lucasconde.ddns.net/GodIsGood/php/auth/logout.php">
+                    <a href="<?php echo BASE_URL; ?>/php/auth/logout.php">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </a>
                 <?php
             } else {
                 ?>
-                    <a href="http://lucasconde.ddns.net/GodIsGood/php/auth/login.php">
+                    <a href="<?php echo BASE_URL; ?>/php/auth/login.php">
                         <i class="fa-solid fa-user"></i>
                     </a>
                 <?php

@@ -1,50 +1,64 @@
 <?php
-    // CONEXION
-    include("../../config/conexion.php");
+    // Conexión a la base de datos
+    require_once __DIR__ . '/../../config/conexion.php';
 
-    if (
-        isset($_POST['name']) && 
-        isset($_POST['cell']) && 
-        isset($_POST['names']) &&
-        isset($_POST['date']) && 
-        isset($_POST['hour'])
-    ) {
-        $name        = $_POST['name'];
-        $cell        = $_POST['cell'];
-        $name_barber = $_POST['names'];
-        $date        = $_POST['date'];
-        $hour        = $_POST['hour'];
+    // Carga de ruta URL
+    require_once __DIR__ . '/../../config/app.php';
 
-        // VALIDAR EL TURNO
-        $verificar = "SELECT COUNT(*) AS total FROM data WHERE name_barber = ? AND date = ? AND hour = ?";
-        $stmtVerificar = mysqli_prepare($conexion, $verificar);
-        mysqli_stmt_bind_param($stmtVerificar, "sss", $name_barber, $date, $hour);
-        mysqli_stmt_execute($stmtVerificar);
-        mysqli_stmt_bind_result($stmtVerificar, $total);
-        mysqli_stmt_fetch($stmtVerificar);
-        mysqli_stmt_close($stmtVerificar);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name   = $_POST['name'] ?? '';
+        $phone  = $_POST['phone'] ?? '';
+        $names_barber = $_POST['names_barber'] ?? '';
+        $date   = $_POST['date'] ?? '';
+        $hour   = $_POST['hour'] ?? '';
 
-        if ($total > 0) {
-            // REDIRIGE SI YA EXITE EL TURNO
-            header("Location: http://lucasconde.ddns.net/GodIsGood/php/pages/status.php?estado=turno_ocupado");
-            exit;
-        }
+            /**
+            * Validación de disponibilidad del turno:
+            * Se consulta si ya existe un turno registrado para el mismo barbero,
+            * fecha y hora. Si existe, se redirige al estado correspondiente.
+            */
+        if ($name && $phone && $names_barber && $date && $hour) {
 
-        // INSERTANDO EL TURNO
-        $consulta = "INSERT INTO data(name, cell, name_barber, date, hour) VALUES (?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conexion, $consulta);
-        mysqli_stmt_bind_param($stmt, "sssss", $name, $cell, $name_barber, $date, $hour);
+            // Verificar si ya existe un turno con ese barbero, fecha y hora
+            $check = $conexion->prepare("SELECT COUNT(*)
+                                            FROM data
+                                        WHERE name_barber = :names_barber
+                                            AND
+                                        date = :date AND hour = :hour");
+            $check->execute([
+                ':names_barber' => $names_barber,
+                ':date'   => $date,
+                ':hour'   => $hour
+            ]);
 
-        $resultado = mysqli_stmt_execute($stmt);
+            if ($check->fetchColumn() > 0) {
+                // Ya hay un turno reservado
+                header("Location: ".BASE_URL."/php/pages/status.php?estado=turno_ocupado");
+                exit();
+            }
 
-        if ($resultado) {
-            header("Location: http://lucasconde.ddns.net/GodIsGood/php/pages/status.php?estado=registrado");
+            // Insertar el turno si está libre
+            $stmt = $conexion->prepare("INSERT INTO data(name, phone, name_barber, date, hour) 
+                                        VALUES (:name, :phone, :names_barber, :date, :hour)");
+            $stmt->execute([
+                ':name'         => $name,
+                ':phone'        => $phone,
+                ':names_barber' => $names_barber,
+                ':date'         => $date,
+                ':hour'         => $hour
+            ]);
+
+            header("Location: ".BASE_URL."/php/pages/status.php?estado=registrado");
+            exit();
+
         } else {
-            header("Location: http://lucasconde.ddns.net/GodIsGood/php/pages/status.php?estado=no_registrado");
+            // Error de registro
+            header("Location: ".BASE_URL."/php/pages/status.php?estado=no_registrado");
+            exit();
         }
 
-        mysqli_stmt_close($stmt);
-        mysqli_close($conexion);
     } else {
-        header("Location: http://lucasconde.ddns.net/GodIsGood/php/pages/status.php?estado=error_formulario");
+        // Error por URL
+        header("Location: ".BASE_URL."/php/pages/status.php?estado=error");
+        exit();
     }

@@ -1,33 +1,44 @@
-/* CONTENEDOR */
-main{
+/* CONTENEDOR PRINCIPAL
+   Define el área principal ajustada al alto del viewport dinámico,
+   descontando el espacio ocupado por el footer (3em). */
+main {
   width: 100%;
   height: calc(100dvh - 3em);
   margin: auto;
 }
 
+/* --------------------------------------------------------------- */
 
-/* CONTENEDOR DE IMG Y LINKS */
-main > .grid{
+/* CONTENEDOR DE IMAGEN Y ENLACES
+   Estructura en dos filas mediante grid:
+   - La primera fila ocupa el espacio restante del viewport.
+   - La segunda fila tiene altura fija para los enlaces.
+   - Se definen áreas semánticas para facilitar el posicionamiento. */
+main > .grid {
   width: 100%;
   display: grid;
   grid-template-rows: calc(100dvh - 150px - 3em) 150px;
-  grid-template-areas:"image"
-                      "links";
+  grid-template-areas: "image"
+                       "links";
   grid-gap: 10px;
-                      
 }
 
+/* --------------------------------------------------------------- */
 
-/* CONTENEDOR DE IMAGEN */
-main > .grid > div:nth-of-type(1){
+/* CONTENEDOR DE IMAGEN
+   Centra la imagen dentro del área 'image' usando flexbox. */
+main > .grid > div:nth-of-type(1) {
   grid-area: image;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-main > .grid > div:nth-of-type(1) > div{
+
+/* Subcontenedor circular con sombra
+   - Aporta estilo visual al marco de la imagen. */
+main > .grid > div:nth-of-type(1) > div {
   width: 300px;
-  height: 300px ;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,25 +46,35 @@ main > .grid > div:nth-of-type(1) > div{
   border-radius: 200%;
   box-shadow: #D2D0D3 0 1px 20px;
 }
-main > .grid > div:nth-of-type(1) > div > img{
+
+/* Imagen escalada al 100% del contenedor circular */
+main > .grid > div:nth-of-type(1) > div > img {
   width: 100%;
 }
 
+/* --------------------------------------------------------------- */
 
-/* CONTENEDOR DE LINKS */
-main > .grid > div:nth-of-type(2){
+/* CONTENEDOR DE ENLACES
+   Área inferior con orientación vertical:
+   - Alinea los botones al centro. */
+main > .grid > div:nth-of-type(2) {
   height: 150px;
   grid-area: links;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* BOTON DE SACAR TURNO*/
-main > .grid > div:nth-of-type(2) > button{
+
+/* BOTÓN DE SACAR TURNO
+   Centrado con margen superior para separación visual. */
+main > .grid > div:nth-of-type(2) > button {
   margin: 2em auto;
 }
-/* INICIAR SESION */
-main > .grid > div:nth-of-type(2) > button > a{
+
+/* ENLACE DE INICIAR SESIÓN
+   Estiliza el <a> dentro del botón:
+   - Alineación centrada y bordes redondeados. */
+main > .grid > div:nth-of-type(2) > button > a {
   width: 100%;
   height: 100%;
   display: inline-flex;
@@ -62,8 +83,10 @@ main > .grid > div:nth-of-type(2) > button > a{
   border-radius: 8px;
 }
 
+/* --------------------------------------------------------------- */
 
-/* FOOTER */
-footer{
+/* FOOTER
+   Fondo oscuro para delimitar visualmente el cierre de la página. */
+footer {
   background-color: var(--color-three);
 }

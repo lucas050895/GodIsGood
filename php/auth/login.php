@@ -1,90 +1,105 @@
 <?php
+    // Inicia sesión
     session_start();
-    
-    // CONEXION
-    include("../../config/conexion.php");
+    // Configuración de conexión y constantes
+    require_once __DIR__ . '/../../config/conexion.php';
+    // Carga de ruta URL
+    require_once __DIR__ . '/../../config/app.php';
 
-    if (isset($_POST['entrar'])) {
-        $usuario_ingresado = $_POST['usuario'];
-        $contraseña_ingresada = $_POST['contraseña'];
+    // Procesar el login solo si viene por POST
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user'], $_POST['password'])) {
+        $user     = trim($_POST['user']);
+        $password = trim($_POST['password']);
 
-        // HASH DE LA CONTRASEÑA INGRESADA PARA COMPARAR CON EL HASH DE LA BD
-        $contraseña_hasheada = hash('sha256', $contraseña_ingresada);
+        try {
+            // Consulta del usuario
+            $stmt = $conexion->prepare("SELECT id, user, password
+                                            FROM users
+                                        WHERE user = :user LIMIT 1");
+            $stmt->execute([':user' => $user]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // USAR SENTENCIA PREPARADA PARA EVITAR INYECCIÓN SQL
-        $stmt = $conexion->prepare("SELECT id, user FROM users WHERE user = ? AND password = ? LIMIT 1");
-        
-        // Manejar error si la preparación falla
-        if ($stmt === false) {
-            header("Location: http://lucasconde.ddns.net/GodIsGood/php/auth/login.php?error=fatal");
+            if ($row) {
+                $storedHash = $row['password'];
+
+                // Contraseña con password_hash()
+                if (password_verify($password, $storedHash)) {
+                    session_regenerate_id(true);
+                    $_SESSION['usuario'] = [
+                        'id'   => $row['id'],
+                        'user' => $row['user']
+                    ];
+                    $_SESSION['ultimoAcceso'] = date("Y-m-d H:i:s");
+
+                    header("Location: " . BASE_URL . "/php/pages/dashboard.php");
+                    exit();
+                }
+
+                // Contraseña antigua en SHA-256 → actualizar a password_hash()
+                if (hash('sha256', $password) === $storedHash) {
+                    $newHash = password_hash($password, PASSWORD_DEFAULT);
+                    $upd = $conexion->prepare("UPDATE users SET password = :new WHERE id = :id");
+                    $upd->execute([':new' => $newHash, ':id' => $row['id']]);
+
+                    session_regenerate_id(true);
+                    $_SESSION['usuario'] = [
+                        'id'   => $row['id'],
+                        'user' => $row['user']
+                    ];
+                    $_SESSION['ultimoAcceso'] = date("Y-m-d H:i:s");
+
+                    header("Location: " . BASE_URL . "/php/pages/dashboard.php");
+                    exit();
+                }
+            }
+
+            // Usuario o contraseña incorrectos
+            header("Location: " . BASE_URL . "/php/auth/login.php?error=1");
             exit();
-        }
 
-        $stmt->bind_param("ss", $usuario_ingresado, $contraseña_hasheada);
-        $stmt->execute();
-
-        $resultado = $stmt->get_result();
-
-        if ($resultado->num_rows > 0) {
-            $datos_usuario = $resultado->fetch_assoc();
-            
-            // GENERAR UN NUEVO ID DE SESIÓN PARA SEGURIDAD
-            session_regenerate_id(true); 
-
-            $_SESSION['usuario'] = array(
-                'id' => $datos_usuario['id'],
-                'user' => $datos_usuario['user']
-            );
-            $_SESSION['ultimoAcceso'] = date("Y-n-j H:i:s");
-
-            // REDIRECCION EXITOSA
-            header("Location: http://lucasconde.ddns.net/GodIsGood/php/pages/dashboard.php");
+        } catch (PDOException $e) {
+            // Error de conexión/consulta
+            header("Location: " . BASE_URL . "/php/auth/login.php?error=fatal");
             exit();
-        }else{
-            header("Location: http://lucasconde.ddns.net/GodIsGood/php/auth/login.php?error=1");
         }
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- META -->
     <?php include('../pages/layout/meta.php')?>
-
-    <!-- TITLE -->
     <title>Login - God Is Good</title>
 
-    <!-- CSS -->
+    <!-- Estilos -->
     <link rel="stylesheet" href="../../assets/css/login.css?v=<?php echo filemtime('../../assets/css/login.css'); ?>">
     <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo filemtime('../../assets/css/styles.css'); ?>">
 
-    <!-- ICONS -->
     <?php include('../pages/layout/icons.php') ?>
 </head>
 <body>
-    <!-- HEADER -->
     <?php include('../pages/layout/header.php'); ?>
 
-    <!-- MAIN -->
     <main>
         <form action="login.php" method="post">
             <fieldset>
-                <legend>login</legend>
+                <legend>Login</legend>
                 <div>
-                    <label for="usuario">Usuario</label>
-                    <input type="text" id="usuario" name="usuario" required placeholder="admin">
+                    <label for="user">Usuario</label>
+                    <input type="text" id="user" name="user" required placeholder="admin">
                 </div>
 
                 <div>
-                    <label for="contraseña">Contraseña</label>
-                    <input type="password" id="contraseña" name="contraseña" required placeholder="admin">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required placeholder="admin">
                 </div>
             </fieldset>
 
-            <input type="submit" id="entrar" name="entrar" value="Entrar">    
+            <input type="submit" id="entrar" name="entrar" value="Entrar">
 
-            <!-- MENSAJES DE ERROR -->
-            <?php if (!empty($_GET['error'])):
+            <?php 
+            // MENSAJES DE ERROR
+            if (!empty($_GET['error'])):
                 $mensaje = '';
                 switch ($_GET['error']) {
                     case '1':
@@ -96,16 +111,19 @@
                     case '3':
                         $mensaje = ' 🚫 Debe iniciar sesión para acceder a esta página.';
                         break;
+                    case 'fatal':
+                        $mensaje = ' ⚠️ Error en el servidor. Contacte al administrador.';
+                        break;
                     default:
                         $mensaje = ' ⚠️ Ha ocurrido un error. Inténtelo nuevamente.';
                         break;
                 }
                 echo '<div>' . htmlspecialchars($mensaje) . '</div>';
-            endif ?>
+            endif;
+            ?>
         </form>
     </main>
 
-    <!-- FOOTER -->
     <?php include('../pages/layout/footer.php'); ?>
 </body>
 </html>

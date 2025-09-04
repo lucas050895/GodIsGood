@@ -1,4 +1,5 @@
-// SCRIPT PARA LA CARGA AUTOMATICA DE HORAS DEL BARBERO
+// Script que carga dinámicamente las horas disponibles del barbero seleccionado según la fecha elegida.
+// Realiza una petición AJAX al backend y actualiza el selector de horarios con opciones habilitadas o inhabilitadas.
 
 document.addEventListener("DOMContentLoaded", () => {
     const barberSelect = document.getElementById("barber");
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 hourSelect.innerHTML = '<option value="" selected disabled>Seleccionar</option>';
                 data.forEach(h => {
                     const opt = document.createElement("option");
-                    opt.value = h.hora; // esto será HH:MM:SS
+                    opt.value = h.hora;
                     opt.textContent = h.hora.substring(0,5) + (h.disponible ? " ✅" : " ❌");
                     if (!h.disponible) {
                         opt.disabled = true;

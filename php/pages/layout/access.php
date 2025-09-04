@@ -1,13 +1,17 @@
+<!-- Página de acceso denegado - GOD IS GOOD
+     Estructura HTML que muestra un mensaje visual de restricción
+     cuando el usuario intenta acceder a una sección sin permisos.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <!-- META -->
+    <!-- Metadatos y configuración del documento -->
     <?php include("meta.php"); ?>
 
-    <!-- TITLE -->
+    <!-- Título de la página -->
     <title>Acceso Denegado - God Is Good</title>
 
-    <!-- CSS -->
+    <!-- Estilos en linea -->
     <style>
         *{
             margin: 0;
@@ -36,7 +40,7 @@
         }
 
 
-        /*FOOTER*/
+        /*Footer*/
         footer{
             width: 100%;
             height: 3em;
@@ -55,7 +59,7 @@
     </style>
 </head>
 <body>
-    <!-- MAIN -->
+    <!-- Main -->
     <main>
         <h1>❌</h1>
         <h2>¡Acceso Denegado!</h2>
@@ -70,5 +74,3 @@
         </span>
     </footer>
 </body>
-  
-

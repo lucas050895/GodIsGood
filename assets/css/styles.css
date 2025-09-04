@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Raleway:ital,wght@1,900&display=swap');
 
 
-/* ESTILOS GENERALES */
-*{
+/* ESTILOS GENERALES
+   Reset básico para todos los elementos:
+   - Elimina márgenes y paddings por defecto.
+   - Aplica box-sizing universal para evitar desbordes.
+   - Define fuente secundaria y color principal como base visual. */
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -10,26 +14,37 @@
     font-family: var(--fuente-secundaria);
     color: var(--color-one);
 }
-:root{
+
+/* --------------------------------------------------------------- */
+
+/* VARIABLES GLOBALES
+   Definición de colores y tipografías base:
+   - Facilitan consistencia visual y permiten ajustes rápidos. */
+:root {
     --color-one: #D2D0D3;
     --color-two: #302E2F;
     --color-three: #000;
     --fuente-primaria: 'Raleway';
     --fuente-secundaria: 'Nunito Sans';
 }
-body{
-    background-color: var(--color-two);
-    color: var(--color-one);
-    background: linear-gradient(to left, #4A569D, #DC2424);
-
-}
-
 
 /* --------------------------------------------------------------- */
 
+/* FONDO DEL BODY
+   Aplica color base y degradado decorativo:
+   - Mejora la estética general del sitio. */
+body {
+    background-color: var(--color-two);
+    color: var(--color-one);
+    background: linear-gradient(to left, #4A569D, #DC2424);
+}
 
-/*HEADER*/
-header{
+/* --------------------------------------------------------------- */
+
+/* HEADER PRINCIPAL
+   Barra superior con distribución horizontal:
+   - Contiene logo, título y acceso a íconos o enlaces. */
+header {
     width: 100%;
     height: 5em;
     margin: auto;
@@ -38,7 +53,10 @@ header{
     justify-content: space-around;
     background: var(--color-three);
 }
-header > div{
+
+/* Contenedor interno del header:
+   - Alinea elementos con espaciado uniforme. */
+header > div {
     width: 450px;
     margin: auto;
     display: flex;
@@ -46,7 +64,8 @@ header > div{
     justify-content: space-around;
 }
 
-header > div > a:nth-of-type(1){
+/* Logo circular alineado al centro */
+header > div > a:nth-of-type(1) {
     width: 5em;
     height: 5em;
     margin: auto;
@@ -54,33 +73,40 @@ header > div > a:nth-of-type(1){
     justify-content: space-around;
     align-items: center;
     border-radius: 100%;
-
 }
-header > div > a > div > img{
+
+/* Imagen del logo */
+header > div > a > div > img {
     width: 70px;
 }
-header > div > h1{
+
+/* Título centrado entre íconos */
+header > div > h1 {
     width: calc(100% - 70px - 70px);
     font-size: 2em;
     text-align: center;
 }
-header > div > a:nth-child(3){
+
+/* Ícono de acceso o acción */
+header > div > a:nth-child(3) {
     width: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
 }
-header > div > a:nth-child(3) > i{
+
+header > div > a:nth-child(3) > i {
     font-size: 2em;
 }
 
-
 /* --------------------------------------------------------------- */
 
-
-/*FOOTER*/
-footer{
+/* FOOTER FIJO
+   Pie de página con posición sticky:
+   - Permanece visible al final del viewport.
+   - Ideal para mostrar créditos o mensajes persistentes. */
+footer {
     width: 100%;
     height: 3em;
     position: sticky;
@@ -90,17 +116,19 @@ footer{
     align-items: center;
     justify-content: center;
 }
-footer *{
-  color: var(--color-fifth);
-  font-size: .9em;
-}
 
+/* Estilo tipográfico del contenido del footer */
+footer * {
+    color: var(--color-fifth);
+    font-size: .9em;
+}
 
 /* --------------------------------------------------------------- */
 
-
-/* MENSAJES DE REGISTRO */
-.registrado {
+/* MENSAJES DE REGISTRO
+   Estilos para feedback visual:
+   - Diferencian estados: éxito, error y aviso. */
+.registered {
     max-width: 500px;
     margin: auto;
     color: green;
@@ -108,7 +136,8 @@ footer *{
     padding: 10px;
     border: 1px solid green;
 }
-.no_registrado{
+
+.unregistered {
     max-width: 500px;
     margin: auto;
     color: red;
@@ -116,7 +145,8 @@ footer *{
     padding: 10px;
     border: 1px solid red;
 }
-.aviso {
+
+.warning {
     max-width: 500px;
     margin: auto;
     color: orange;
@@ -124,22 +154,13 @@ footer *{
     padding: 10px;
     border: 1px solid orange;
 }
-/* ESTILOS DE HORA HABILITADA Y DESAHBILITADA */
-option.hora-habilitada {
-    background-color: #07f007;
-    color: var(--color-one);
-}
-option.hora-inhabilitada {
-    background-color: #ff0000;
-    color: var(--color-one);
-}
-
 
 /* --------------------------------------------------------------- */
 
-
-/* BOTON */
-button{
+/* BOTÓN PRINCIPAL
+   Estilo moderno con sombra y bordes redondeados:
+   - Preparado para interacción táctil y visual. */
+button {
     width: 150px;
     height: 4em;
     border-radius: 8px;
@@ -151,6 +172,8 @@ button{
     background-color: black;
     box-shadow: #D2D0D3 0 1px 20px;
 }
-button > a{
-  text-decoration: none;
+
+/* Enlace interno del botón sin subrayado */
+button > a {
+    text-decoration: none;
 }

@@ -1,16 +1,27 @@
-<!-- CONEXION -->
-<?php include("../../config/conexion.php"); ?>
+<?php
+    /**
+    * Página de estado para el sistema de turnos de la barbería "God Is Good".
+    * Muestra mensajes dinámicos de éxito o error según el resultado de la reserva.
+    * Los mensajes se generan a partir del parámetro 'estado' recibido por GET.
+    */
+
+    // Carga de funciones auxiliares y configuración de conexión PDO
+    include_once("../../config/function.php");
+    
+    // Carga de ruta URL
+    require_once __DIR__ . '/../../config/app.php';
+?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- META -->
+    <!-- Metadatos y configuración del documento -->
     <?php include('layout/meta.php')?>
 
-    <!-- TITLE -->
+    <!-- Título de la página -->
     <title>Estado del turno - God Is Good</title>
 
-    <!-- CSS -->
+    <!-- Estilos principales con control de caché -->
     <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo filemtime('../../assets/css/styles.css'); ?>">
     <style>
         main{
@@ -21,14 +32,14 @@
         }
     </style>
 
-    <!-- ICONS -->
+    <!-- Íconos personalizados para mejorar la identidad visual del sitio -->
     <?php include('layout/icons.php') ?>
 </head>
 <body>   
-    <!-- HEADER -->
+    <!-- Inclusión del componente de encabezado desde layout/header.php -->
     <?php include("layout/header.php"); ?>
 
-    <!-- MAIN -->
+    <!-- Main -->
     <main>
         <?php
             // MENSAJES
@@ -37,19 +48,19 @@
                 switch ($_GET['estado']) {
                     case 'registrado':
                         $mensaje = 'El turno se registro correctamente.';
-                        $clase = 'registrado';
+                        $clase = 'registered';
                         break;
                     case 'no_registrado':
                         $mensaje = 'Hubo un error. El turno no se registro.';
-                        $clase = 'no_registrado';
+                        $clase = 'unregistered';
                         break;
                     case 'turno_ocupado':
                         $mensaje = 'El turno ya se encuentra reservado.';
-                        $clase = 'no_registrado';
+                        $clase = 'warning';
                         break;
                     default:
                         $mensaje = 'Ha ocurrido un error. Inténtelo nuevamente.';
-                        $clase = 'aviso';
+                        $clase = 'warning';
                         break;
                 }
 
@@ -58,7 +69,7 @@
         ?>
     </main>
 
-    <!-- FOOTER -->
+    <!-- Inclusión del componente footer desde layout/footer.php -->
     <?php include("layout/footer.php"); ?>
 </body>
 </html>

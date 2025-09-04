@@ -3,3 +3,7 @@ config/conexion.php
 
 # IGNORAR SCRIPT
 Script-Barberia.sql
+
+# IGNORAR IMG DE GITHUB
+assets/img/github/*
+

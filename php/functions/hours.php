@@ -1,39 +1,33 @@
 <?php
-    // CONEXION
-    include("../../config/conexion.php");
+    // Carga de funciones y configuración de conexión
+    include("../../config/function.php");
 
+    // Indica que la respuesta será en formato JSON
+    header("Content-Type: application/json");
+
+    // Validación de parámetros requeridos
     if (isset($_GET['barber']) && isset($_GET['date'])) {
         $barber = $_GET['barber'];
         $date   = $_GET['date'];
 
+        // Genera el rango de horas disponibles (de 09:00 a 20:00)
         $horarios = [];
         for ($h = 9; $h <= 20; $h++) {
             $horarios[] = sprintf("%02d:00:00", $h);
         }
 
-        // BUSQUEDA DE HORARIOS POR BARBERO
-        $query = "SELECT hour FROM data WHERE name_barber = ? AND date = ?";
-        $stmt = mysqli_prepare($conexion, $query);
-        mysqli_stmt_bind_param($stmt, "ss", $barber, $date);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+        // Consulta las horas ya ocupadas para ese barbero y fecha
+        $busy = hours($conexion, $barber, $date);
 
-        $ocupados = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $ocupados[] = $row['hour'];
-        }
-
-        mysqli_stmt_close($stmt);
-        mysqli_close($conexion);
-
-        $response = [];
-        foreach ($horarios as $hora) {
-            $response[] = [
+        // Construye la respuesta indicando disponibilidad por hora
+        $response = array_map(function($hora) use ($busy) {
+            return [
                 "hora" => $hora,
-                "disponible" => !in_array($hora, $ocupados)
+                "disponible" => !in_array($hora, $busy)
             ];
-        }
+        }, $horarios);
 
-        header("Content-Type: application/json");
+        // Devuelve la respuesta en formato JSON
         echo json_encode($response);
     }
+    

@@ -1,72 +1,119 @@
-/* CONTENEDOR GENERAL */
-main{
+/* CONTENEDOR PRINCIPAL (MAIN)
+   Estructura base del layout:
+   - Grid vertical con dos áreas: 'form' y 'login'.
+   - 'form' ocupa el alto restante del viewport descontando header y footer. */
+main {
     width: 100%;
     display: grid;
     grid-template-rows: calc(100dvh - 5em - 3em);
-    grid-template-areas:"form"
-                        "login";
-    
+    grid-template-areas:
+        "form"
+        "login";
 }
 
+/* --------------------------------------------------------------- */
 
-/* CONTENEDOR DE FORMULARIO */
-main > div{
-    grid-area: form;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* FORMULARIO */
-form{
+/* FORMULARIO PRINCIPAL
+   Estilo centrado y responsivo:
+   - Máximo ancho definido.
+   - Fondo temático, sombra suave y bordes redondeados. */
+form {
     width: 80%;
     max-width: 380px;
     margin: auto;
     padding: 1em;
     text-align: center;
     border-radius: 5px;
+    background-color: var(--color-three);
     color: var(--color-one);
-    background: var(--color-three);
     box-shadow: #D2D0D3 0 1px 10px;
 }
-form  > fieldset{
+
+/* AGRUPACIÓN DE CAMPOS (FIELDSET)
+   Organización visual de los inputs:
+   - Borde temático y espaciado interno. */
+form > fieldset {
     width: 100%;
     margin: 1em auto;
     padding: 10px;
-    border-color: var(--color-one);
+    border: 1px solid var(--color-one);
 }
-form > fieldset > legend{
+
+/* TÍTULO DEL GRUPO (LEGEND)
+   Estilo centrado con espaciado lateral. */
+form > fieldset > legend {
     padding: 0 1em;
     margin: auto;
+    font-family: var(--fuente-primaria);
+    font-weight: bold;
 }
-form  > fieldset  > div{
+
+/* CONTENEDOR DE CAMPOS (DIV)
+   Distribución horizontal de label e input:
+   - Flexbox centrado y alineado. */
+form > fieldset > div {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: .5em 0;
 }
-form > fieldset > div > label{
+
+/* ETIQUETAS (LABEL)
+   Texto en mayúsculas y alineación lateral:
+   - Ocupan el 35% del ancho. */
+form > fieldset > div > label {
     width: 35%;
     display: inline-flex;
     text-transform: uppercase;
+    font-weight: bold;
 }
+
+/* CAMPOS DE ENTRADA Y SELECTORES
+   Estilo limpio y centrado:
+   - Ocupan el 65% del ancho.
+   - Sin bordes, con color temático. */
 form > fieldset > div > input,
 form > fieldset > div > select,
-form > fieldset > div > select > option{
+form > fieldset > div > select > option {
     width: 65%;
-    margin: .5em 0;
+    height: 25px;
     border: none;
-    color: var(--color-three);
     text-align: center;
+    color: var(--color-three);
+    background-color: var(--color-one);
+    padding: .4em;
+    border-radius: 4px;
 }
-form > fieldset > div > select{
+
+/* SELECTORES (SELECT)
+   Ajuste de padding para alineación visual.*/
+form > fieldset > div > select {
     padding: 0;
 }
-form > input{
+
+/* BOTÓN DE ENVÍO
+   Estilo moderno y táctil:
+   - Preparado para interacción visual. */
+form > input[type="submit"] {
     width: 150px;
+    height: 3em;
     font-size: 1.3rem;
     color: var(--color-three);
-    cursor:  pointer;
+    background-color: var(--color-one);
+    border: none;
+    border-radius: 8px;
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
 }
-form #name{
+form > input[type="submit"]:hover{
+    box-shadow: #D2D0D3 0 1px 10px;
+}
+
+/* CAMPO DE NOMBRE
+   Capitaliza automáticamente el texto ingresado. */
+form #name {
     text-transform: capitalize;
 }
